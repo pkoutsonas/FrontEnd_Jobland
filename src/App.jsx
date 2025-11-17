@@ -16,6 +16,7 @@ import { UserProvider } from "./components/UserContext";
 import EmployerProfilePage from "./pages/EmployerProfilePage";
 import Dashboard from "./components/Dashboard";
 import NewJobForm from "./components/NewJobForm";
+import JobEdit from "./components/JobEdit";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path="/company/:id" element={<EmployerProfilePage />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/jobs/new" element={<NewJobForm />} />
+      <Route path="/jobs/:id/edit" element={<JobEdit />} />
     </Route>
   )
 );

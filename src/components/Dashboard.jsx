@@ -59,27 +59,37 @@ const Dashboard = () => {
       {jobs.length === 0 ? (
         <p>No jobs posted yet.</p>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {jobs.map((job) => (
-            <div key={job.id} className="border p-4 rounded-lg shadow">
-              <h3 className="font-bold text-lg">{job.title}</h3>
-              <p className="text-gray-600">{job.company.name}</p>
-              <p className="text-green-700 font-bold">${job.salary}</p>
+        <div className="border rounded-lg shadow-lg p-4 bg-white max-h-96 overflow-y-auto">
+          <h2 className="text-xl font-semibold mb-3">Your Job Posts</h2>
 
-              <div className="flex space-x-2 mt-4">
-                <button
-                  onClick={() => navigate(`/jobs/${job.id}/edit`)}
-                  className="bg-yellow-500 text-white px-3 py-1 rounded">
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(job.id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded">
-                  Delete
-                </button>
+          <div className="space-y-4">
+            {jobs.map((job) => (
+              <div
+                key={job.id}
+                className="border p-3 rounded-md shadow-sm bg-gray-50">
+                <h3 className="font-bold text-lg">{job.title}</h3>
+                <p className="text-gray-900">{job.company_name}</p>
+
+                <p className="text-gray-600 line-clamp-2">{job.description}</p>
+
+                <p className="text-green-700 font-bold">${job.salary}</p>
+
+                <div className="flex space-x-2 mt-3">
+                  <button
+                    onClick={() => navigate(`/jobs/${job.id}/edit`)}
+                    className="bg-purple-500 text-white px-3 py-1 rounded">
+                    Edit
+                  </button>
+
+                  <button
+                    onClick={() => handleDelete(job.id)}
+                    className="bg-red-500 text-white px-3 py-1 rounded">
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
     </div>
